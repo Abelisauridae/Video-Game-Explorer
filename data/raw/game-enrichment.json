@@ -1,0 +1,192 @@
+{
+  "1001": {
+    "metadata": {
+      "releaseYear": 1993,
+      "developer": "Treasure",
+      "publisher": "Sega",
+      "genres": ["Run and gun", "Action"],
+      "summary": "A fast-moving cooperative action game built around weapon combinations, elaborate boss fights, and expressive sprite animation."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "screenscraper", "kind": "box-2D"},
+      "screenshot": {"url": null, "provider": "screenscraper", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "screenscraper", "kind": "wheel"},
+      "video": {"url": null, "provider": "screenscraper", "kind": "video-preview"}
+    },
+    "sources": {
+      "metadataProvider": "screenscraper",
+      "metadataRecordUrl": "https://screenscraper.fr/",
+      "boxArtProvider": "screenscraper",
+      "boxArtRecordUrl": "https://screenscraper.fr/",
+      "providerIds": ["screenscraper"]
+    }
+  },
+  "1002": {
+    "metadata": {
+      "releaseYear": 1993,
+      "developer": "Sega",
+      "publisher": "Sega",
+      "genres": ["Role-playing", "Science fantasy"],
+      "summary": "A late-era 16-bit role-playing game with turn-based combat, large-scale story beats, and one of Sega's strongest console RPG reputations."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "screenscraper", "kind": "box-2D"},
+      "screenshot": {"url": null, "provider": "screenscraper", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "screenscraper", "kind": "wheel"}
+    },
+    "sources": {
+      "metadataProvider": "screenscraper",
+      "metadataRecordUrl": "https://screenscraper.fr/",
+      "boxArtProvider": "screenscraper",
+      "boxArtRecordUrl": "https://screenscraper.fr/",
+      "providerIds": ["screenscraper"]
+    }
+  },
+  "1003": {
+    "metadata": {
+      "releaseYear": 1992,
+      "developer": "Sega Technical Institute",
+      "publisher": "Sega",
+      "genres": ["Platformer"],
+      "summary": "A flagship 16-bit platformer centered on speed, branching routes, and two-player options with Sonic and Tails."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "screenscraper", "kind": "box-2D"},
+      "screenshot": {"url": null, "provider": "screenscraper", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "screenscraper", "kind": "wheel"}
+    },
+    "sources": {
+      "metadataProvider": "screenscraper",
+      "metadataRecordUrl": "https://screenscraper.fr/",
+      "boxArtProvider": "screenscraper",
+      "boxArtRecordUrl": "https://screenscraper.fr/",
+      "providerIds": ["screenscraper"]
+    }
+  },
+  "3001": {
+    "metadata": {
+      "releaseYear": 1995,
+      "developer": "Square",
+      "publisher": "Square",
+      "genres": ["Role-playing", "Time travel"],
+      "summary": "A landmark console RPG remembered for its ensemble cast, time-spanning structure, and multiple endings."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "screenscraper", "kind": "box-2D"},
+      "screenshot": {"url": null, "provider": "screenscraper", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "screenscraper", "kind": "wheel"}
+    },
+    "sources": {
+      "metadataProvider": "igdb",
+      "metadataRecordUrl": "https://www.igdb.com/",
+      "boxArtProvider": "screenscraper",
+      "boxArtRecordUrl": "https://screenscraper.fr/",
+      "providerIds": ["igdb", "screenscraper"]
+    }
+  },
+  "3002": {
+    "metadata": {
+      "releaseYear": 1994,
+      "developer": "Nintendo R&D1",
+      "publisher": "Nintendo",
+      "genres": ["Action-adventure", "Exploration"],
+      "summary": "A moody side-scrolling exploration game that helped define the modern search-driven action-adventure template."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "screenscraper", "kind": "box-2D"},
+      "screenshot": {"url": null, "provider": "screenscraper", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "screenscraper", "kind": "wheel"}
+    },
+    "sources": {
+      "metadataProvider": "igdb",
+      "metadataRecordUrl": "https://www.igdb.com/",
+      "boxArtProvider": "screenscraper",
+      "boxArtRecordUrl": "https://screenscraper.fr/",
+      "providerIds": ["igdb", "screenscraper"]
+    }
+  },
+  "3003": {
+    "metadata": {
+      "releaseYear": 1991,
+      "developer": "Nintendo EAD",
+      "publisher": "Nintendo",
+      "genres": ["Action-adventure"],
+      "summary": "A foundational top-down adventure game with layered overworld design, dungeons, and dual-world structure."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "screenscraper", "kind": "box-2D"},
+      "screenshot": {"url": null, "provider": "screenscraper", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "screenscraper", "kind": "wheel"}
+    },
+    "sources": {
+      "metadataProvider": "igdb",
+      "metadataRecordUrl": "https://www.igdb.com/",
+      "boxArtProvider": "screenscraper",
+      "boxArtRecordUrl": "https://screenscraper.fr/",
+      "providerIds": ["igdb", "screenscraper"]
+    }
+  },
+  "4001": {
+    "metadata": {
+      "releaseYear": 1989,
+      "developer": "Nintendo R&D1",
+      "publisher": "Nintendo",
+      "genres": ["Puzzle"],
+      "summary": "The defining handheld pack-in puzzle game and a major reason the Game Boy became a mass-market hit."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "thegamesdb", "kind": "front-cover"},
+      "screenshot": {"url": null, "provider": "thegamesdb", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "thegamesdb", "kind": "clear-logo"}
+    },
+    "sources": {
+      "metadataProvider": "thegamesdb",
+      "metadataRecordUrl": "https://thegamesdb.net/",
+      "boxArtProvider": "thegamesdb",
+      "boxArtRecordUrl": "https://thegamesdb.net/",
+      "providerIds": ["thegamesdb"]
+    }
+  },
+  "4002": {
+    "metadata": {
+      "releaseYear": 1996,
+      "developer": "Game Freak",
+      "publisher": "Nintendo",
+      "genres": ["Role-playing", "Monster collecting"],
+      "summary": "The original handheld monster-collecting phenomenon built around version differences, trading, and turn-based battles."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "thegamesdb", "kind": "front-cover"},
+      "screenshot": {"url": null, "provider": "thegamesdb", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "thegamesdb", "kind": "clear-logo"}
+    },
+    "sources": {
+      "metadataProvider": "thegamesdb",
+      "metadataRecordUrl": "https://thegamesdb.net/",
+      "boxArtProvider": "thegamesdb",
+      "boxArtRecordUrl": "https://thegamesdb.net/",
+      "providerIds": ["thegamesdb"]
+    }
+  },
+  "4003": {
+    "metadata": {
+      "releaseYear": 1993,
+      "developer": "Nintendo EAD",
+      "publisher": "Nintendo",
+      "genres": ["Action-adventure"],
+      "summary": "A compact but inventive handheld Zelda built around item-driven traversal and a dreamlike island setting."
+    },
+    "media": {
+      "boxFront": {"url": null, "provider": "thegamesdb", "kind": "front-cover"},
+      "screenshot": {"url": null, "provider": "thegamesdb", "kind": "screenshot"},
+      "logo": {"url": null, "provider": "thegamesdb", "kind": "clear-logo"}
+    },
+    "sources": {
+      "metadataProvider": "thegamesdb",
+      "metadataRecordUrl": "https://thegamesdb.net/",
+      "boxArtProvider": "thegamesdb",
+      "boxArtRecordUrl": "https://thegamesdb.net/",
+      "providerIds": ["thegamesdb"]
+    }
+  }
+}

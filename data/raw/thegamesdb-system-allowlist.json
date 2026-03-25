@@ -1,0 +1,160 @@
+{
+  "systems": [
+    {
+      "key": "megadrive",
+      "platformId": 36,
+      "name": "Mega Drive",
+      "shortName": "Mega Drive",
+      "manufacturer": "Sega",
+      "category": "Home console",
+      "generation": "Fourth generation",
+      "releaseYear": 1988,
+      "endYear": 1997,
+      "summary": "Sega's 16-bit console line, known for fast arcade-style ports and a strong action catalog."
+    },
+    {
+      "key": "mastersystem",
+      "platformId": 35,
+      "name": "Master System",
+      "shortName": "Master System",
+      "manufacturer": "Sega",
+      "category": "Home console",
+      "generation": "Third generation",
+      "releaseYear": 1985,
+      "endYear": 1996,
+      "summary": "Sega's 8-bit console family with strong arcade conversions and a long afterlife in Europe and Brazil."
+    },
+    {
+      "key": "dreamcast",
+      "platformId": 16,
+      "name": "Dreamcast",
+      "shortName": "Dreamcast",
+      "manufacturer": "Sega",
+      "category": "Home console",
+      "generation": "Sixth generation",
+      "releaseYear": 1998,
+      "endYear": 2001,
+      "summary": "Sega's final console, remembered for inventive arcade design, early online play, and a cult-classic library."
+    },
+    {
+      "key": "saturn",
+      "platformId": 17,
+      "name": "Sega Saturn",
+      "shortName": "Saturn",
+      "manufacturer": "Sega",
+      "category": "Home console",
+      "generation": "Fifth generation",
+      "releaseYear": 1994,
+      "endYear": 2000,
+      "summary": "Sega's 32-bit console with a rich Japanese library, strong 2D action, and a distinctive late-arcade identity."
+    },
+    {
+      "key": "nes",
+      "platformId": 7,
+      "name": "Nintendo Entertainment System",
+      "shortName": "NES",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Third generation",
+      "releaseYear": 1983,
+      "endYear": 1995,
+      "summary": "Nintendo's breakthrough 8-bit console and one of the foundational system libraries in videogame history."
+    },
+    {
+      "key": "snes",
+      "platformId": 6,
+      "name": "Super Nintendo Entertainment System",
+      "shortName": "SNES",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Fourth generation",
+      "releaseYear": 1990,
+      "endYear": 2003,
+      "summary": "Nintendo's 16-bit console with a standout library of platformers, role-playing games, and first-party adventure titles."
+    },
+    {
+      "key": "gb",
+      "platformId": 4,
+      "name": "Game Boy",
+      "shortName": "Game Boy",
+      "manufacturer": "Nintendo",
+      "category": "Handheld",
+      "generation": "Fourth generation",
+      "releaseYear": 1989,
+      "endYear": 2003,
+      "summary": "Nintendo's monochrome handheld line and one of the clearest examples of a system-first game catalog."
+    },
+    {
+      "key": "gbc",
+      "platformId": 41,
+      "name": "Game Boy Color",
+      "shortName": "Game Boy Color",
+      "manufacturer": "Nintendo",
+      "category": "Handheld",
+      "generation": "Fifth generation",
+      "releaseYear": 1998,
+      "endYear": 2003,
+      "summary": "Nintendo's color revision of the Game Boy line, bridging classic handheld design and a more modern portable library."
+    },
+    {
+      "key": "gba",
+      "platformId": 5,
+      "name": "Game Boy Advance",
+      "shortName": "GBA",
+      "manufacturer": "Nintendo",
+      "category": "Handheld",
+      "generation": "Sixth generation",
+      "releaseYear": 2001,
+      "endYear": 2010,
+      "summary": "Nintendo's 32-bit handheld line with a broad library of platformers, RPGs, remakes, and portable experimentation."
+    },
+    {
+      "key": "n64",
+      "platformId": 3,
+      "name": "Nintendo 64",
+      "shortName": "Nintendo 64",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Fifth generation",
+      "releaseYear": 1996,
+      "endYear": 2002,
+      "summary": "Nintendo's cartridge-based 3D console, defined by multiplayer landmarks and a concentrated first-party catalog."
+    },
+    {
+      "key": "gamecube",
+      "platformId": 2,
+      "name": "Nintendo GameCube",
+      "shortName": "GameCube",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Sixth generation",
+      "releaseYear": 2001,
+      "endYear": 2007,
+      "summary": "Nintendo's compact optical-disc console with a polished first-party lineup and a strong late-arcade-era sensibility."
+    },
+    {
+      "key": "psx",
+      "platformId": 10,
+      "name": "Sony PlayStation",
+      "shortName": "PlayStation",
+      "manufacturer": "Sony",
+      "category": "Home console",
+      "generation": "Fifth generation",
+      "releaseYear": 1994,
+      "endYear": 2006,
+      "summary": "Sony's first console and a major pivot point in the move toward CD-based 3D game publishing."
+    },
+    {
+      "key": "psp",
+      "platformId": 13,
+      "name": "PlayStation Portable",
+      "shortName": "PSP",
+      "manufacturer": "Sony",
+      "category": "Handheld",
+      "generation": "Seventh generation",
+      "releaseYear": 2004,
+      "endYear": 2014,
+      "summary": "Sony's multimedia-focused handheld with a deep action, RPG, and portable console-style library."
+    }
+  ]
+}

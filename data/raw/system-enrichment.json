@@ -1,0 +1,41 @@
+{
+  "1": {
+    "shortName": "Mega Drive",
+    "manufacturer": "Sega",
+    "category": "Home console",
+    "generation": "Fourth generation",
+    "releaseYear": 1988,
+    "endYear": 1997,
+    "summary": "Sega's 16-bit console line, known for fast arcade-style ports and a strong action catalog.",
+    "sources": {
+      "metadataProvider": "screenscraper",
+      "metadataRecordUrl": "https://screenscraper.fr/"
+    }
+  },
+  "3": {
+    "shortName": "SNES",
+    "manufacturer": "Nintendo",
+    "category": "Home console",
+    "generation": "Fourth generation",
+    "releaseYear": 1990,
+    "endYear": 2003,
+    "summary": "Nintendo's 16-bit console with a standout library of platformers, role-playing games, and first-party adventure titles.",
+    "sources": {
+      "metadataProvider": "igdb",
+      "metadataRecordUrl": "https://www.igdb.com/"
+    }
+  },
+  "4": {
+    "shortName": "Game Boy",
+    "manufacturer": "Nintendo",
+    "category": "Handheld",
+    "generation": "Fourth generation",
+    "releaseYear": 1989,
+    "endYear": 2003,
+    "summary": "Nintendo's monochrome handheld line and one of the clearest examples of a system-first game catalog.",
+    "sources": {
+      "metadataProvider": "thegamesdb",
+      "metadataRecordUrl": "https://thegamesdb.net/"
+    }
+  }
+}

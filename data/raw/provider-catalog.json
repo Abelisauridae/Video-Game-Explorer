@@ -1,0 +1,35 @@
+{
+  "providers": [
+    {
+      "id": "thegamesdb",
+      "name": "TheGamesDB",
+      "websiteUrl": "https://thegamesdb.net/",
+      "docsUrl": "https://api.thegamesdb.net/",
+      "pricing": "Public API key",
+      "capabilities": [
+        "platform catalog",
+        "games by platform",
+        "remote box art",
+        "developers",
+        "publishers",
+        "genres",
+        "region and country ids"
+      ],
+      "credentials": [
+        "THEGAMESDB_API_KEY"
+      ],
+      "notes": "Primary atlas provider for the current public build. The atlas keeps remote cover URLs instead of copying thousands of images into the repository."
+    }
+  ],
+  "atlasStrategy": {
+    "catalog": [
+      "thegamesdb"
+    ],
+    "metadata": [
+      "thegamesdb"
+    ],
+    "boxArt": [
+      "thegamesdb"
+    ]
+  }
+}

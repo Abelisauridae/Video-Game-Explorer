@@ -1,0 +1,48 @@
+{
+  "providers": [
+    {
+      "id": "screenscraper",
+      "name": "ScreenScraper",
+      "batoceraLabel": "Screenscraper",
+      "websiteUrl": "https://screenscraper.fr/",
+      "docsUrl": "https://wiki.batocera.org/scrape_from",
+      "credentials": ["ScreenScraper username", "ScreenScraper password"],
+      "capabilities": ["Box art", "Screenshots", "Logos", "Videos", "Metadata"],
+      "notes": "Batocera documents ScreenScraper as the richest media source and notes request limits plus extra download cost for mix images."
+    },
+    {
+      "id": "thegamesdb",
+      "name": "TheGamesDB",
+      "batoceraLabel": "theGameDB",
+      "websiteUrl": "https://thegamesdb.net/",
+      "docsUrl": "https://api.thegamesdb.net/key.php",
+      "credentials": ["TheGamesDB API key"],
+      "capabilities": ["Box art", "Screenshots", "Logos", "Metadata"],
+      "notes": "Community-maintained art and metadata source that Batocera exposes directly in its scrape menu."
+    },
+    {
+      "id": "arcadedb",
+      "name": "Arcade Database",
+      "batoceraLabel": "Arcade Database",
+      "websiteUrl": "https://adb.arcadeitalia.net/",
+      "docsUrl": "https://adb.arcadeitalia.net/",
+      "credentials": [],
+      "capabilities": ["Arcade metadata", "Arcade media"],
+      "notes": "Arcade-oriented source best aligned with MAME and related arcade catalog records."
+    },
+    {
+      "id": "igdb",
+      "name": "IGDB",
+      "batoceraLabel": "IGDB",
+      "websiteUrl": "https://www.igdb.com/",
+      "docsUrl": "https://api-docs.igdb.com/?getting-started=",
+      "credentials": ["Client ID", "Client secret"],
+      "capabilities": ["Metadata", "Covers", "Artworks"],
+      "notes": "Batocera documents IGDB support and requires a Client ID and Client secret in the scraper settings."
+    }
+  ],
+  "atlasStrategy": {
+    "boxArt": ["screenscraper", "thegamesdb", "igdb", "arcadedb"],
+    "metadata": ["igdb", "screenscraper", "thegamesdb", "arcadedb"]
+  }
+}

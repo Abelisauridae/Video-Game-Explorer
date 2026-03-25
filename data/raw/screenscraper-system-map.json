@@ -1,0 +1,14 @@
+{
+  "1": {
+    "screenscraperSystemId": 1,
+    "screenscraperName": "Megadrive"
+  },
+  "3": {
+    "screenscraperSystemId": 4,
+    "screenscraperName": "Super Nintendo"
+  },
+  "4": {
+    "screenscraperSystemId": 9,
+    "screenscraperName": "Game Boy"
+  }
+}
