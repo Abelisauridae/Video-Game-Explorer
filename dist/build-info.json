@@ -1,0 +1,15 @@
+{
+  "catalogSource": "thegamesdb",
+  "systemCount": 3,
+  "gameCount": 4477,
+  "chunkCount": 3,
+  "assetStrategy": {
+    "mode": "remote-source-url",
+    "boxArtBaseUrl": null,
+    "boxArtStagingDir": null,
+    "publishedGameImageCount": 4467,
+    "missingBoxArtCount": 10,
+    "copiedAssetCount": 0
+  },
+  "openFile": "index.html"
+}

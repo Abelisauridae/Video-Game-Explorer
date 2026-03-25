@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Videogame Atlas</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./data/game-database.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Curated Release Atlas</p>
+          <h1>Videogame Atlas</h1>
+          <p class="hero-summary">
+            A static browser for videogame systems and their releases, generated from a curated
+            TheGamesDB system allowlist with remote box art, region flags, and atlas-style release geography.
+          </p>
+        </div>
+        <div class="hero-stats" id="hero-stats"></div>
+      </header>
+
+      <section class="controls-panel">
+        <label class="field field-search">
+          <span>Search games or systems</span>
+          <input id="search-input" type="search" placeholder="Try Chrono Trigger or Mega Drive" />
+        </label>
+
+        <label class="field">
+          <span>Manufacturer</span>
+          <select id="manufacturer-filter"></select>
+        </label>
+
+        <label class="field">
+          <span>Category</span>
+          <select id="category-filter"></select>
+        </label>
+
+        <label class="field">
+          <span>Generation</span>
+          <select id="generation-filter"></select>
+        </label>
+
+        <label class="field">
+          <span>Sort</span>
+          <select id="sort-select">
+            <option value="alpha">Alphabetical</option>
+            <option value="system">System</option>
+            <option value="year">Newest release year</option>
+          </select>
+        </label>
+      </section>
+
+      <main class="app-grid">
+        <aside class="systems-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-label">Systems</p>
+              <h2 id="systems-count-heading">Loading</h2>
+            </div>
+            <button id="clear-focus-button" class="ghost-button" type="button">Clear focus</button>
+          </div>
+          <p class="panel-caption" id="systems-caption"></p>
+          <div id="systems-list" class="systems-list"></div>
+        </aside>
+
+        <section class="games-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-label">Games</p>
+              <h2 id="games-count-heading">Loading</h2>
+            </div>
+          </div>
+          <p class="panel-caption" id="games-caption"></p>
+          <div class="games-toolbar">
+            <p class="games-status" id="games-status"></p>
+            <button id="load-more-games-button" class="ghost-button" type="button">Show more</button>
+          </div>
+          <div id="games-list" class="games-list"></div>
+        </section>
+
+        <section class="detail-panel" id="detail-panel"></section>
+      </main>
+
+      <footer class="sources-panel" id="sources-panel"></footer>
+    </div>
+  </body>
+</html>
