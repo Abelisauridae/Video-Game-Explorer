@@ -85,6 +85,7 @@ const SYSTEM_LOGO_PALETTES = {
   },
 };
 const SYSTEM_LOGO_CACHE = new Map();
+const EXCLUDED_TITLE_PATTERNS = [/~\s*hack\s*~/i];
 
 function normalizeTitle(title) {
   return String(title || "").replace(/^the\s+/i, "").trim();
@@ -96,6 +97,11 @@ function buildSearchBlob(parts) {
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
+}
+
+function isExcludedGame(game) {
+  const title = String(game?.title || "");
+  return EXCLUDED_TITLE_PATTERNS.some((pattern) => pattern.test(title));
 }
 
 function parseRegionCodes(rawRegion) {
@@ -199,7 +205,7 @@ function normalizeGameRecord(game) {
 
 function appendGames(records) {
   records.forEach((game) => {
-    if (!game || gameById.has(game.id)) return;
+    if (!game || gameById.has(game.id) || isExcludedGame(game)) return;
     const normalized = normalizeGameRecord(game);
     games.push(normalized);
     gameById.set(normalized.id, normalized);
@@ -437,9 +443,8 @@ function formatRegionLabel(game) {
 
 function getChunkProgressText() {
   if (!chunkManifest.length) return "";
-  const totalGames = data.metadata?.gameCount || games.length;
   const pieces = [
-    `Loaded ${formatNumber(games.length)} of ${formatNumber(totalGames)} games`,
+    `Loaded ${formatNumber(games.length)} visible games`,
     `from ${formatNumber(chunkLoadState.loadedChunks)} of ${formatNumber(chunkLoadState.totalChunks)} system files`,
   ];
   if (chunkLoadState.failedChunks) {
