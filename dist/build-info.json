@@ -2,7 +2,7 @@
   "catalogSource": "thegamesdb",
   "systemCount": 3,
   "gameCount": 4477,
-  "chunkCount": 3,
+  "chunkCount": 6,
   "assetStrategy": {
     "mode": "remote-source-url",
     "boxArtBaseUrl": null,

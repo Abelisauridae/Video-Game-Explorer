@@ -1,11 +1,11 @@
 # Videogame Atlas
 
-Static videogame atlas built from a curated [TheGamesDB](https://thegamesdb.net/) system allowlist.
+Static videogame atlas built from a curated system allowlist and a pluggable catalog source.
 
 The current public-first workflow is intentionally simple:
 
 - pick the systems you want in the atlas
-- fetch their games and remote box art from TheGamesDB
+- fetch their games and remote art from the active catalog provider
 - build a lightweight static bundle for GitHub Pages
 
 The atlas does not need local ROM folders or copied cover-art dumps.
@@ -40,13 +40,14 @@ Copy the env template:
 cp videogame-atlas/.env.example videogame-atlas/.env.local
 ```
 
-Then put your TheGamesDB API key in `.env.local`:
+Then put the provider keys you plan to use in `.env.local`:
 
 ```bash
 THEGAMESDB_API_KEY="your_thegamesdb_api_key"
+RETROACHIEVEMENTS_WEB_API_KEY="your_retroachievements_web_api_key"
 ```
 
-## Fetch the catalog
+## Fetch TheGamesDB
 
 ```bash
 set -a
@@ -91,10 +92,26 @@ That command:
 
 If you want a quick no-network preview of what the next batch would be, add `--dry-run`.
 
+## Fetch RetroAchievements
+
+```bash
+set -a
+source videogame-atlas/.env.local
+set +a
+python3 videogame-atlas/scripts/fetch_retroachievements_data.py --systems megadrive snes gb
+```
+
+That writes:
+
+- `data/raw/retroachievements-catalog.json`
+- `data/raw/retroachievements-game-detail-cache.json`
+
+The RetroAchievements fetcher uses the same system allowlist, pages through each system's game list, and caches per-game summary responses locally so repeated runs only need to fill in missing details.
+
 ## Build the local data bundle
 
 ```bash
-python3 videogame-atlas/scripts/build_game_data.py
+python3 videogame-atlas/scripts/build_game_data.py --catalog-source auto
 ```
 
 That writes:
@@ -105,7 +122,7 @@ That writes:
 ## Build the publish bundle
 
 ```bash
-python3 videogame-atlas/scripts/build_publish_bundle.py
+python3 videogame-atlas/scripts/build_publish_bundle.py --catalog-source auto
 ```
 
 That writes a GitHub Pages-friendly bundle to `docs/`:
@@ -118,6 +135,8 @@ That writes a GitHub Pages-friendly bundle to `docs/`:
 - `docs/data/chunks/<system>.js`
 
 The publish build now uses a small index file plus per-system chunk files, which keeps individual GitHub-tracked files comfortably smaller than a monolithic all-games bundle.
+
+If a single system would still blow past GitHub's file-size comfort zone, the publish builder automatically splits it into numbered subchunks such as `snes-001.js`, `snes-002.js`, and so on.
 
 No local `box-art/` directory is created in the publish build because the atlas uses remote TheGamesDB cover URLs directly.
 

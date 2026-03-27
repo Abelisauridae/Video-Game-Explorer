@@ -13,6 +13,78 @@ const REGION_ATLAS = {
   in: { code: "in", label: "India", shortLabel: "IN", flag: "🇮🇳", x: 653, y: 212 },
   ru: { code: "ru", label: "Russia", shortLabel: "RU", flag: "🇷🇺", x: 665, y: 90 },
 };
+const SYSTEM_LOGO_OVERRIDES = {
+  dreamcast: { brand: "Sega", title: "Dreamcast" },
+  gamecube: { brand: "Nintendo", title: "GameCube" },
+  gb: { brand: "Nintendo", title: "Game Boy" },
+  gba: { brand: "Nintendo", title: "Game Boy Advance" },
+  gbc: { brand: "Nintendo", title: "Game Boy Color" },
+  mastersystem: { brand: "Sega", title: "Master System" },
+  megadrive: { brand: "Sega", title: "Mega Drive" },
+  n64: { brand: "Nintendo", title: "Nintendo 64" },
+  nes: { brand: "Nintendo", title: "NES" },
+  psp: { brand: "Sony", title: "PSP" },
+  psx: { brand: "Sony", title: "PlayStation" },
+  saturn: { brand: "Sega", title: "Saturn" },
+  snes: { brand: "Nintendo", title: "Super NES" },
+};
+const SYSTEM_LOGO_PALETTES = {
+  Nintendo: {
+    start: "#aa2424",
+    end: "#5b1111",
+    glow: "#ffb784",
+    accent: "#ffe1bf",
+    detail: "#ffd29f",
+    ink: "#fff8f0",
+    muted: "#ffd7c2",
+  },
+  Sega: {
+    start: "#164cce",
+    end: "#0d1f69",
+    glow: "#45d0c0",
+    accent: "#c7f8ff",
+    detail: "#7bd5ff",
+    ink: "#f6fbff",
+    muted: "#d4e9ff",
+  },
+  Sony: {
+    start: "#2f3443",
+    end: "#0e1017",
+    glow: "#7ab3ff",
+    accent: "#e4f0ff",
+    detail: "#8dc9ff",
+    ink: "#fbfdff",
+    muted: "#ccd6e6",
+  },
+  Microsoft: {
+    start: "#1b6b39",
+    end: "#0f2e1d",
+    glow: "#a6eb8d",
+    accent: "#eefeda",
+    detail: "#c3f0b1",
+    ink: "#f6fff6",
+    muted: "#d4e8d6",
+  },
+  Atari: {
+    start: "#8f3d00",
+    end: "#351500",
+    glow: "#ffae6b",
+    accent: "#ffe7cf",
+    detail: "#ffc38c",
+    ink: "#fff8f3",
+    muted: "#f5d8c4",
+  },
+  default: {
+    start: "#1c3442",
+    end: "#0a131c",
+    glow: "#45d0c0",
+    accent: "#f4eedf",
+    detail: "#8fd6cb",
+    ink: "#f4eedf",
+    muted: "#bfd0ca",
+  },
+};
+const SYSTEM_LOGO_CACHE = new Map();
 
 function normalizeTitle(title) {
   return String(title || "").replace(/^the\s+/i, "").trim();
@@ -46,6 +118,13 @@ function getRegionEntries(rawRegion) {
 
 function getProviders() {
   return data.metadata.providers || data.metadata.batoceraProviders || [];
+}
+
+function getCatalogSourceLabel() {
+  const source = String(data.metadata?.catalogSource || "").toLowerCase();
+  if (source === "retroachievements") return "RetroAchievements";
+  if (source === "thegamesdb") return "TheGamesDB";
+  return "the current catalog source";
 }
 
 function getReleaseInfo(game) {
@@ -205,6 +284,130 @@ function escapeSvgText(value) {
   return escapeHtml(value);
 }
 
+function splitLogoLines(value, maxLineLength = 14, maxLines = 2) {
+  const words = String(value || "System")
+    .split(/\s+/)
+    .map((word) => word.trim())
+    .filter(Boolean);
+
+  if (!words.length) return ["System"];
+
+  const lines = [];
+  let current = words[0];
+
+  for (let index = 1; index < words.length; index += 1) {
+    const word = words[index];
+    if (`${current} ${word}`.length <= maxLineLength || lines.length >= maxLines - 1) {
+      current = `${current} ${word}`;
+      continue;
+    }
+    lines.push(current);
+    current = word;
+  }
+
+  lines.push(current);
+  if (lines.length <= maxLines) return lines;
+  const kept = lines.slice(0, maxLines - 1);
+  kept.push(lines.slice(maxLines - 1).join(" "));
+  return kept;
+}
+
+function getSystemLogoProfile(system) {
+  const override = SYSTEM_LOGO_OVERRIDES[system.key] || {};
+  const brand = override.brand || system.manufacturer || "Platform";
+  const palette =
+    SYSTEM_LOGO_PALETTES[brand] ||
+    SYSTEM_LOGO_PALETTES[system.manufacturer] ||
+    SYSTEM_LOGO_PALETTES.default;
+  const title =
+    override.title ||
+    (String(system.shortName || "").length <= 18 ? system.shortName : "") ||
+    system.name ||
+    "System";
+  return {
+    brand,
+    title,
+    subtitle: system.category || "Platform",
+    year: system.releaseYear || "",
+    palette,
+  };
+}
+
+function buildSystemLogoDataUrl(system) {
+  const cacheKey = JSON.stringify([
+    system.key,
+    system.name,
+    system.shortName,
+    system.manufacturer,
+    system.category,
+    system.releaseYear,
+    system.logo?.url,
+  ]);
+  if (SYSTEM_LOGO_CACHE.has(cacheKey)) {
+    return SYSTEM_LOGO_CACHE.get(cacheKey);
+  }
+
+  const explicitUrl = system.logo?.url;
+  if (explicitUrl) {
+    SYSTEM_LOGO_CACHE.set(cacheKey, explicitUrl);
+    return explicitUrl;
+  }
+
+  const profile = getSystemLogoProfile(system);
+  const titleLines = splitLogoLines(profile.title, profile.title.length > 16 ? 12 : 14, 3);
+  const titleFontSize = titleLines.length > 2 || profile.title.length > 18 ? 34 : 42;
+  const titleLineHeight = Math.round(titleFontSize * 0.92);
+  const titleStartY = titleLines.length > 2 ? 108 : 116;
+  const encodedSvg = encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="${escapeSvgText(
+      `${system.name || profile.title} logo`
+    )}">
+      <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${profile.palette.start}"/>
+          <stop offset="100%" stop-color="${profile.palette.end}"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="25%" cy="12%" r="65%">
+          <stop offset="0%" stop-color="${profile.palette.glow}" stop-opacity="0.62"/>
+          <stop offset="100%" stop-color="${profile.palette.glow}" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="320" height="220" rx="30" fill="url(#bg)"/>
+      <rect x="18" y="18" width="284" height="184" rx="22" fill="none" stroke="${profile.palette.detail}" stroke-opacity="0.22"/>
+      <circle cx="84" cy="38" r="82" fill="url(#glow)"/>
+      <rect x="26" y="24" width="146" height="26" rx="13" fill="${profile.palette.accent}" fill-opacity="0.14"/>
+      <text x="38" y="41" fill="${profile.palette.ink}" font-size="14" font-family="Trebuchet MS, Arial, sans-serif" letter-spacing="2.4" font-weight="700">${escapeSvgText(
+        profile.brand.toUpperCase()
+      )}</text>
+      ${titleLines
+        .map(
+          (line, index) => `
+            <text
+              x="30"
+              y="${titleStartY + index * titleLineHeight}"
+              fill="${profile.palette.ink}"
+              font-size="${titleFontSize}"
+              font-family="Arial Black, Trebuchet MS, Arial, sans-serif"
+              font-weight="900"
+              letter-spacing="0.8"
+            >${escapeSvgText(line)}</text>
+          `
+        )
+        .join("")}
+      <rect x="30" y="167" width="260" height="2" rx="1" fill="${profile.palette.detail}" fill-opacity="0.66"/>
+      <text x="30" y="191" fill="${profile.palette.muted}" font-size="15" font-family="Trebuchet MS, Arial, sans-serif" letter-spacing="1.5" font-weight="700">${escapeSvgText(
+        String(profile.subtitle || "").toUpperCase()
+      )}</text>
+      <text x="290" y="191" text-anchor="end" fill="${profile.palette.accent}" font-size="16" font-family="Trebuchet MS, Arial, sans-serif" font-weight="700">${escapeSvgText(
+        String(profile.year || "")
+      )}</text>
+    </svg>
+  `);
+  const dataUrl = `data:image/svg+xml;charset=UTF-8,${encodedSvg}`;
+  SYSTEM_LOGO_CACHE.set(cacheKey, dataUrl);
+  return dataUrl;
+}
+
 function getProviderName(providerId) {
   const provider = providerById.get(providerId);
   return provider?.name || provider?.legacyLabel || provider?.batoceraLabel || providerId || "Unknown";
@@ -354,8 +557,39 @@ function renderRegionAtlasMap(game) {
 }
 
 function renderSystemMark(system) {
+  const logoUrl = buildSystemLogoDataUrl(system);
+  if (logoUrl) {
+    return `
+      <div class="system-mark">
+        <img class="system-logo-image" src="${escapeAttribute(logoUrl)}" alt="${escapeAttribute(
+          `${system.name} logo`
+        )}" loading="lazy" decoding="async">
+      </div>
+    `;
+  }
   return `
     <div class="system-mark">
+      <div>
+        <strong>${escapeHtml(getInitials(system.shortName || system.name))}</strong>
+        <small>${escapeHtml(system.manufacturer || "System")}</small>
+      </div>
+    </div>
+  `;
+}
+
+function renderSystemPoster(system, className = "detail-poster system-poster") {
+  const logoUrl = buildSystemLogoDataUrl(system);
+  if (logoUrl) {
+    return `
+      <div class="${className}">
+        <img class="system-logo-image" src="${escapeAttribute(logoUrl)}" alt="${escapeAttribute(
+          `${system.name} logo`
+        )}" decoding="async">
+      </div>
+    `;
+  }
+  return `
+    <div class="${className}">
       <div>
         <strong>${escapeHtml(getInitials(system.shortName || system.name))}</strong>
         <small>${escapeHtml(system.manufacturer || "System")}</small>
@@ -750,12 +984,7 @@ function renderDetailPanel(selectedSystem, selectedGame, visibleGames) {
     const summary = summarizeSystemGames(systemGames);
     elements.detailPanel.innerHTML = `
       <div class="detail-hero">
-        <div class="detail-poster">
-          <div>
-            <strong>${escapeHtml(getInitials(selectedSystem.shortName || selectedSystem.name))}</strong>
-            <small>${escapeHtml(selectedSystem.manufacturer || "System")}</small>
-          </div>
-        </div>
+        ${renderSystemPoster(selectedSystem)}
         <div class="detail-copy-block">
           <p class="panel-label">System Overview</p>
           <h2>${escapeHtml(selectedSystem.name)}</h2>
@@ -834,8 +1063,8 @@ function renderDetailPanel(selectedSystem, selectedGame, visibleGames) {
       <p class="panel-label">Catalog Overview</p>
       <h2>${escapeHtml(formatNumber(data.metadata.systemCount))} systems in the current bundle</h2>
       <p class="detail-copy">
-        This draft is built from a curated TheGamesDB allowlist: systems at the top, release entries beneath them,
-        remote cover URLs instead of local art dumps, and region metadata that can drive flags and map markers.
+        This draft is built from a curated ${escapeHtml(getCatalogSourceLabel())} import: systems at the top, release
+        entries beneath them, and a chunked publish bundle designed for static hosting.
       </p>
     </div>
     <div class="fact-grid">
@@ -893,8 +1122,9 @@ function renderSourcesPanel() {
     <p class="panel-label">Sources</p>
     <h2>Provider catalog</h2>
     <p class="detail-copy">
-      The current atlas is built around public catalog providers. This draft uses a curated TheGamesDB system allowlist and
-      remote cover URLs, so it stays portable without local art dumps.
+      The current atlas is built around public catalog providers. This draft currently points at
+      ${escapeHtml(getCatalogSourceLabel())}, and the publish bundle is intentionally chunked so it stays portable without
+      oversized tracked files.
     </p>
     <div class="source-list">
       ${getProviders()

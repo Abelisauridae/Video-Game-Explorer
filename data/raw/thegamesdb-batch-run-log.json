@@ -1,0 +1,768 @@
+[
+  {
+    "timestamp": "2026-03-26T00:13:06.888053+00:00",
+    "kind": "cycle_started",
+    "batchSize": 1,
+    "pauseMinutes": 20.0,
+    "rateLimitPauseMinutes": 45.0,
+    "maxHours": 6.0,
+    "maxBatches": null,
+    "skipDist": true,
+    "dryRun": false
+  },
+  {
+    "timestamp": "2026-03-26T00:13:06.925165+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T00:18:22.802360+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T00:18:23.094139+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T00:18:23.215410+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T00:18:23.250739+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 1,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T00:38:23.335433+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T00:43:39.884983+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T00:43:40.191001+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T00:43:40.315460+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T00:43:40.350632+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 2,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T01:03:40.431903+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T01:08:56.762252+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T01:08:57.036892+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T01:08:57.155852+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T01:08:57.188467+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 3,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T01:28:57.270947+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T01:34:13.433977+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T01:34:13.716776+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T01:34:13.836315+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T01:34:13.870324+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 4,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T01:54:13.956570+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T01:59:30.123966+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T01:59:30.409325+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T01:59:30.532382+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T01:59:30.564279+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 5,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T02:19:30.648769+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T02:24:46.742374+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T02:24:47.018225+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T02:24:47.140006+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T02:24:47.175737+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 6,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T02:44:47.259833+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T02:50:03.142008+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T02:50:03.416954+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T02:50:03.537861+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T02:50:03.573331+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 7,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T03:10:03.655860+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T03:15:19.532922+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T03:15:19.804488+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T03:15:19.924536+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T03:15:19.958059+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 8,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T03:35:20.044860+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T03:40:35.957733+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T03:40:36.231060+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T03:40:36.353081+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T03:40:36.386904+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 9,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T04:00:36.472071+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T04:05:52.812293+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T04:05:53.100749+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T04:05:53.237473+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T04:05:53.271914+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 10,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T04:25:53.355029+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T04:31:09.033031+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T04:31:09.315325+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T04:31:09.433302+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T04:31:09.466506+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 11,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T04:51:09.558596+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T04:56:25.619506+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T04:56:25.893985+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T04:56:26.012334+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T04:56:26.044988+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 12,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T05:16:26.133977+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T05:21:42.036849+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T05:21:42.317069+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T05:21:42.436597+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T05:21:42.473282+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 13,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T05:41:42.558601+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T05:46:58.366766+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T05:46:58.640819+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T05:46:58.759516+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T05:46:58.794338+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 14,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T06:06:58.880425+00:00",
+    "kind": "batch_planned",
+    "systems": [
+      "mastersystem"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T06:12:16.960889+00:00",
+    "kind": "fetch_finished",
+    "systems": [
+      "mastersystem"
+    ],
+    "returnCode": 0,
+    "summary": "Rate limited while fetching genres; continuing with an empty lookup table.\nRate limited while fetching developers; continuing with an empty lookup table.\nRate limited while fetching publishers; continuing with an empty lookup table.\nFetching Master System (mastersystem)...\nRate limited while fetching Master System (mastersystem); keeping the systems already fetched in this run.\nWrote 3 systems and 4477 games to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/data/raw/thegamesdb-catalog.json (0 systems fetched this run)"
+  },
+  {
+    "timestamp": "2026-03-26T06:12:17.234819+00:00",
+    "kind": "command_finished",
+    "label": "build_game_data",
+    "returnCode": 0,
+    "summary": ""
+  },
+  {
+    "timestamp": "2026-03-26T06:12:17.355682+00:00",
+    "kind": "command_finished",
+    "label": "build_publish_bundle_docs",
+    "returnCode": 0,
+    "summary": "Wrote publish bundle to /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs\nPreserved remote box-art URLs; no local box-art directory was created.\nOpen /Users/anthonybrano/Dropbox/AJB/videogame-atlas/docs/index.html"
+  },
+  {
+    "timestamp": "2026-03-26T06:12:17.389351+00:00",
+    "kind": "batch_succeeded",
+    "systems": [
+      "mastersystem"
+    ],
+    "successfulBatches": 15,
+    "remainingSystems": [
+      "mastersystem",
+      "dreamcast",
+      "saturn",
+      "nes",
+      "gbc",
+      "gba",
+      "n64",
+      "gamecube",
+      "psx",
+      "psp"
+    ]
+  },
+  {
+    "timestamp": "2026-03-26T06:32:17.396309+00:00",
+    "kind": "cycle_stopped",
+    "reason": "max_hours_reached"
+  }
+]

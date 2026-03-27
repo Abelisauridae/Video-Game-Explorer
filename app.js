@@ -120,6 +120,13 @@ function getProviders() {
   return data.metadata.providers || data.metadata.batoceraProviders || [];
 }
 
+function getCatalogSourceLabel() {
+  const source = String(data.metadata?.catalogSource || "").toLowerCase();
+  if (source === "retroachievements") return "RetroAchievements";
+  if (source === "thegamesdb") return "TheGamesDB";
+  return "the current catalog source";
+}
+
 function getReleaseInfo(game) {
   return game.releaseInfo || game.batocera || {};
 }
@@ -1056,8 +1063,8 @@ function renderDetailPanel(selectedSystem, selectedGame, visibleGames) {
       <p class="panel-label">Catalog Overview</p>
       <h2>${escapeHtml(formatNumber(data.metadata.systemCount))} systems in the current bundle</h2>
       <p class="detail-copy">
-        This draft is built from a curated TheGamesDB allowlist: systems at the top, release entries beneath them,
-        remote cover URLs instead of local art dumps, and region metadata that can drive flags and map markers.
+        This draft is built from a curated ${escapeHtml(getCatalogSourceLabel())} import: systems at the top, release
+        entries beneath them, and a chunked publish bundle designed for static hosting.
       </p>
     </div>
     <div class="fact-grid">
@@ -1115,8 +1122,9 @@ function renderSourcesPanel() {
     <p class="panel-label">Sources</p>
     <h2>Provider catalog</h2>
     <p class="detail-copy">
-      The current atlas is built around public catalog providers. This draft uses a curated TheGamesDB system allowlist and
-      remote cover URLs, so it stays portable without local art dumps.
+      The current atlas is built around public catalog providers. This draft currently points at
+      ${escapeHtml(getCatalogSourceLabel())}, and the publish bundle is intentionally chunked so it stays portable without
+      oversized tracked files.
     </p>
     <div class="source-list">
       ${getProviders()

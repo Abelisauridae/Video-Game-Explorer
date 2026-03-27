@@ -18,6 +18,7 @@ OUTPUT_JSON = ROOT / "data" / "game-database.json"
 OUTPUT_JS = ROOT / "data" / "game-database.js"
 BATOCERA_LIBRARY_PATH = RAW_DIR / "batocera-library.json"
 THEGAMESDB_CATALOG_PATH = RAW_DIR / "thegamesdb-catalog.json"
+RETROACHIEVEMENTS_CATALOG_PATH = RAW_DIR / "retroachievements-catalog.json"
 PROVIDER_CATALOG_PATH = RAW_DIR / "provider-catalog.json"
 
 NINTENDO_KEYS = {
@@ -567,6 +568,17 @@ def load_thegamesdb_catalog() -> dict | None:
     return payload
 
 
+def load_retroachievements_catalog() -> dict | None:
+    payload = load_json(RETROACHIEVEMENTS_CATALOG_PATH, default=None)
+    if not isinstance(payload, dict):
+        return None
+    systems = payload.get("systems")
+    games = payload.get("games")
+    if not isinstance(systems, list) or not isinstance(games, list):
+        return None
+    return payload
+
+
 def load_systems() -> list[dict]:
     systems_payload = load_json(RAW_DIR / "retroachievements-systems.json")
     systems_rows = extract_rows(systems_payload)
@@ -693,6 +705,7 @@ def load_games() -> list[dict]:
 
 
 def build_database(
+    catalog_source: str = "auto",
     publish_box_art_root: Path | None = None,
     publish_box_art_base_url: str | None = None,
     batocera_roms_root: Path | None = None,
@@ -702,8 +715,18 @@ def build_database(
             "Portable box-art publishing requires both publish_box_art_root and publish_box_art_base_url."
         )
 
-    thegamesdb_catalog = load_thegamesdb_catalog()
-    if thegamesdb_catalog:
+    retroachievements_catalog = load_retroachievements_catalog() if catalog_source in {"auto", "retroachievements"} else None
+    thegamesdb_catalog = load_thegamesdb_catalog() if catalog_source in {"auto", "thegamesdb"} else None
+    if retroachievements_catalog:
+        systems = [dict(item) for item in retroachievements_catalog.get("systems", []) if isinstance(item, dict)]
+        games = [dict(item) for item in retroachievements_catalog.get("games", []) if isinstance(item, dict)]
+        catalog_context = {
+            "kind": "retroachievements",
+            "metadata": retroachievements_catalog.get("metadata", {})
+            if isinstance(retroachievements_catalog.get("metadata"), dict)
+            else {},
+        }
+    elif thegamesdb_catalog:
         systems = [dict(item) for item in thegamesdb_catalog.get("systems", []) if isinstance(item, dict)]
         games = [dict(item) for item in thegamesdb_catalog.get("games", []) if isinstance(item, dict)]
         catalog_context = {
@@ -934,9 +957,16 @@ def main() -> None:
         default=None,
         help="Optional web base URL that should serve the staged box art, for example https://cdn.example.com/videogame-atlas/box-art",
     )
+    parser.add_argument(
+        "--catalog-source",
+        choices=("auto", "retroachievements", "thegamesdb"),
+        default="auto",
+        help="Which normalized catalog source should drive the build when more than one is available.",
+    )
     args = parser.parse_args()
 
     database = build_database(
+        catalog_source=args.catalog_source,
         publish_box_art_root=Path(args.publish_box_art_root).expanduser() if args.publish_box_art_root else None,
         publish_box_art_base_url=text(args.publish_box_art_base_url),
     )

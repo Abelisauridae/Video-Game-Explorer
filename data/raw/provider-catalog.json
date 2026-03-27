@@ -1,6 +1,24 @@
 {
   "providers": [
     {
+      "id": "retroachievements",
+      "name": "RetroAchievements",
+      "websiteUrl": "https://retroachievements.org/",
+      "docsUrl": "https://api-docs.retroachievements.org/",
+      "pricing": "Free web API key",
+      "capabilities": [
+        "system catalog",
+        "games by system",
+        "per-game summary metadata",
+        "system icons",
+        "box art and title art"
+      ],
+      "credentials": [
+        "RETROACHIEVEMENTS_WEB_API_KEY"
+      ],
+      "notes": "Strong free retro source with official API docs and cache-friendly system/game endpoints. Better suited to the atlas than a shared public key with a tiny monthly allowance."
+    },
+    {
       "id": "thegamesdb",
       "name": "TheGamesDB",
       "websiteUrl": "https://thegamesdb.net/",
@@ -23,12 +41,15 @@
   ],
   "atlasStrategy": {
     "catalog": [
+      "retroachievements",
       "thegamesdb"
     ],
     "metadata": [
+      "retroachievements",
       "thegamesdb"
     ],
     "boxArt": [
+      "retroachievements",
       "thegamesdb"
     ]
   }

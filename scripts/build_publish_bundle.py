@@ -13,6 +13,11 @@ import build_game_data
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_DIR = ROOT / "docs"
 STATIC_FILES = ("index.html", "app.js", "styles.css")
+DEFAULT_MAX_CHUNK_BYTES = 24 * 1024 * 1024
+CHUNK_PREFIX = "window.VIDEOGAME_ATLAS_CHUNKS = window.VIDEOGAME_ATLAS_CHUNKS || {};\n"
+CHUNK_KEY_PREFIX = "window.VIDEOGAME_ATLAS_CHUNKS["
+CHUNK_KEY_MIDDLE = "] = "
+CHUNK_SUFFIX = ";\n"
 
 
 def compact_text(value: object, limit: int) -> str | None:
@@ -58,6 +63,7 @@ def sanitize_source_list(sources: object) -> list[dict]:
 
 
 def compact_system(system: dict) -> dict:
+    logo = system.get("logo") if isinstance(system.get("logo"), dict) else {}
     return {
         "id": system.get("id"),
         "key": system.get("key"),
@@ -72,6 +78,12 @@ def compact_system(system: dict) -> dict:
         "wikiUrl": system.get("wikiUrl"),
         "gameCount": system.get("gameCount"),
         "topGenres": system.get("topGenres") if isinstance(system.get("topGenres"), list) else [],
+        "logo": {
+            "url": logo.get("url"),
+            "provider": logo.get("provider"),
+            "kind": logo.get("kind"),
+            "alt": logo.get("alt"),
+        },
         "sourceAttribution": {
             "metadataProvider": ((system.get("sourceAttribution") or {}).get("metadataProvider")),
         },
@@ -137,7 +149,63 @@ def compact_metadata(metadata: dict) -> dict:
     }
 
 
-def compact_database_for_publish(database: dict) -> tuple[dict, dict[str, dict]]:
+def estimate_chunk_file_size_bytes(chunk_key: str, payload: dict) -> int:
+    script = (
+        CHUNK_PREFIX
+        + CHUNK_KEY_PREFIX
+        + json.dumps(chunk_key)
+        + CHUNK_KEY_MIDDLE
+        + json.dumps(payload, ensure_ascii=True)
+        + CHUNK_SUFFIX
+    )
+    return len(script.encode("utf-8"))
+
+
+def split_system_games_into_chunks(
+    system_key: str,
+    system_id: object,
+    games: list[dict],
+    max_chunk_bytes: int,
+) -> list[dict]:
+    if max_chunk_bytes <= 0:
+        return [{"key": system_key, "systemId": system_id, "games": games}]
+
+    game_parts: list[list[dict]] = [[]]
+    for game in games:
+        current_games = game_parts[-1]
+        candidate_games = current_games + [game]
+        candidate_payload = {
+            "key": f"{system_key}-000",
+            "systemKey": system_key,
+            "systemId": system_id,
+            "part": len(game_parts),
+            "partCount": None,
+            "games": candidate_games,
+        }
+        if current_games and estimate_chunk_file_size_bytes(candidate_payload["key"], candidate_payload) > max_chunk_bytes:
+            game_parts.append([game])
+        else:
+            game_parts[-1] = candidate_games
+
+    game_parts = [part for part in game_parts if part]
+    part_count = len(game_parts)
+    chunk_payloads = []
+    for index, part_games in enumerate(game_parts, start=1):
+        chunk_key = system_key if part_count == 1 else f"{system_key}-{index:03d}"
+        chunk_payloads.append(
+            {
+                "key": chunk_key,
+                "systemKey": system_key,
+                "systemId": system_id,
+                "part": index,
+                "partCount": part_count,
+                "games": part_games,
+            }
+        )
+    return chunk_payloads
+
+
+def compact_database_for_publish(database: dict, max_chunk_bytes: int) -> tuple[dict, dict[str, dict]]:
     metadata = database.get("metadata", {}) if isinstance(database.get("metadata"), dict) else {}
     systems = database.get("systems", []) if isinstance(database.get("systems"), list) else []
     games = database.get("games", []) if isinstance(database.get("games"), list) else []
@@ -148,38 +216,53 @@ def compact_database_for_publish(database: dict) -> tuple[dict, dict[str, dict]]
         for system in compact_systems
     }
 
-    chunk_map: dict[str, dict] = {}
-    for system in compact_systems:
-        key = system.get("key") or str(system.get("id"))
-        chunk_map[key] = {
-            "key": key,
-            "systemId": system.get("id"),
-            "games": [],
-        }
+    games_by_system_key: dict[str, list[dict]] = {
+        (system.get("key") or str(system.get("id"))): []
+        for system in compact_systems
+    }
 
     for game in games:
         if not isinstance(game, dict):
             continue
         system_key = system_key_by_id.get(game.get("systemId"))
-        if not system_key or system_key not in chunk_map:
+        if not system_key or system_key not in games_by_system_key:
             continue
-        chunk_map[system_key]["games"].append(compact_game(game))
+        games_by_system_key[system_key].append(compact_game(game))
 
-    chunk_manifest = [
-        {
-            "key": key,
-            "systemId": chunk["systemId"],
-            "path": f"./data/chunks/{key}.js",
-            "gameCount": len(chunk["games"]),
-        }
-        for key, chunk in chunk_map.items()
-    ]
+    chunk_map: dict[str, dict] = {}
+    chunk_manifest = []
+    for system in compact_systems:
+        system_key = system.get("key") or str(system.get("id"))
+        split_chunks = split_system_games_into_chunks(
+            system_key=system_key,
+            system_id=system.get("id"),
+            games=games_by_system_key.get(system_key, []),
+            max_chunk_bytes=max_chunk_bytes,
+        )
+        for payload in split_chunks:
+            chunk_key = payload["key"]
+            chunk_map[chunk_key] = payload
+            chunk_manifest.append(
+                {
+                    "key": chunk_key,
+                    "systemId": payload["systemId"],
+                    "systemKey": system_key,
+                    "path": f"./data/chunks/{chunk_key}.js",
+                    "gameCount": len(payload["games"]),
+                    "part": payload["part"],
+                    "partCount": payload["partCount"],
+                    "estimatedBytes": estimate_chunk_file_size_bytes(chunk_key, payload),
+                }
+            )
+
+    chunk_manifest.sort(key=lambda item: (item["systemKey"], item["part"], item["key"]))
 
     index_payload = {
         "metadata": {
             **compact_metadata(metadata),
             "chunkManifest": chunk_manifest,
             "chunked": True,
+            "maxChunkBytes": max_chunk_bytes,
         },
         "systems": compact_systems,
         "games": [],
@@ -205,10 +288,12 @@ def write_database_bundle(output_dir: Path, index_payload: dict, chunk_map: dict
     chunks_dir.mkdir(parents=True, exist_ok=True)
     for key, payload in chunk_map.items():
         (chunks_dir / f"{key}.js").write_text(
-            "window.VIDEOGAME_ATLAS_CHUNKS = window.VIDEOGAME_ATLAS_CHUNKS || {};\n"
-            f"window.VIDEOGAME_ATLAS_CHUNKS[{json.dumps(key)}] = "
+            CHUNK_PREFIX
+            + CHUNK_KEY_PREFIX
+            + json.dumps(key)
+            + CHUNK_KEY_MIDDLE
             + json.dumps(payload, ensure_ascii=True)
-            + ";\n",
+            + CHUNK_SUFFIX,
             encoding="utf-8",
         )
 
@@ -245,11 +330,23 @@ def main() -> None:
         default=str(DEFAULT_OUTPUT_DIR),
         help="Directory where the publishable atlas bundle should be written.",
     )
+    parser.add_argument(
+        "--max-chunk-bytes",
+        type=int,
+        default=DEFAULT_MAX_CHUNK_BYTES,
+        help="Maximum size target for each published chunk file, in bytes.",
+    )
+    parser.add_argument(
+        "--catalog-source",
+        choices=("auto", "retroachievements", "thegamesdb"),
+        default="auto",
+        help="Which normalized catalog source should drive the publish bundle when more than one is available.",
+    )
     args = parser.parse_args()
 
     output_dir = Path(args.output_dir).expanduser().resolve()
-    database = build_game_data.build_database()
-    publish_database, chunk_map = compact_database_for_publish(database)
+    database = build_game_data.build_database(catalog_source=args.catalog_source)
+    publish_database, chunk_map = compact_database_for_publish(database, max_chunk_bytes=args.max_chunk_bytes)
     copy_static_shell(output_dir)
     write_database_bundle(output_dir, publish_database, chunk_map)
     write_build_info(output_dir, publish_database)

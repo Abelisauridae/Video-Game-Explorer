@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-03-25T23:07:49.922912+00:00",
+    "generatedAt": "2026-03-27T15:36:44.375696+00:00",
     "systemCount": 3,
     "gameCount": 4477,
     "manufacturers": [
@@ -11,12 +11,30 @@
       "Action",
       "Platform",
       "Sports",
-      "Shooter",
-      "Role-Playing",
       "Adventure",
-      "Puzzle"
+      "Puzzle",
+      "Shooter",
+      "Role-Playing"
     ],
     "providers": [
+      {
+        "id": "retroachievements",
+        "name": "RetroAchievements",
+        "websiteUrl": "https://retroachievements.org/",
+        "docsUrl": "https://api-docs.retroachievements.org/",
+        "pricing": "Free web API key",
+        "capabilities": [
+          "system catalog",
+          "games by system",
+          "per-game summary metadata",
+          "system icons",
+          "box art and title art"
+        ],
+        "credentials": [
+          "RETROACHIEVEMENTS_WEB_API_KEY"
+        ],
+        "notes": "Strong free retro source with official API docs and cache-friendly system/game endpoints. Better suited to the atlas than a shared public key with a tiny monthly allowance."
+      },
       {
         "id": "thegamesdb",
         "name": "TheGamesDB",
@@ -40,12 +58,15 @@
     ],
     "atlasStrategy": {
       "catalog": [
+        "retroachievements",
         "thegamesdb"
       ],
       "metadata": [
+        "retroachievements",
         "thegamesdb"
       ],
       "boxArt": [
+        "retroachievements",
         "thegamesdb"
       ]
     },
@@ -83,27 +104,93 @@
     },
     "chunkManifest": [
       {
+        "key": "gb-001",
+        "systemId": 4,
+        "systemKey": "gb",
+        "path": "./data/chunks/gb-001.js",
+        "gameCount": 1138,
+        "part": 1,
+        "partCount": 2,
+        "estimatedBytes": 1048468
+      },
+      {
+        "key": "gb-002",
+        "systemId": 4,
+        "systemKey": "gb",
+        "path": "./data/chunks/gb-002.js",
+        "gameCount": 465,
+        "part": 2,
+        "partCount": 2,
+        "estimatedBytes": 425582
+      },
+      {
         "key": "megadrive",
         "systemId": 36,
+        "systemKey": "megadrive",
         "path": "./data/chunks/megadrive.js",
-        "gameCount": 177
+        "gameCount": 177,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 172254
       },
       {
-        "key": "snes",
+        "key": "snes-001",
         "systemId": 6,
-        "path": "./data/chunks/snes.js",
-        "gameCount": 2697
+        "systemKey": "snes",
+        "path": "./data/chunks/snes-001.js",
+        "gameCount": 1086,
+        "part": 1,
+        "partCount": 3,
+        "estimatedBytes": 1048212
       },
       {
-        "key": "gb",
-        "systemId": 4,
-        "path": "./data/chunks/gb.js",
-        "gameCount": 1603
+        "key": "snes-002",
+        "systemId": 6,
+        "systemKey": "snes",
+        "path": "./data/chunks/snes-002.js",
+        "gameCount": 1103,
+        "part": 2,
+        "partCount": 3,
+        "estimatedBytes": 1048009
+      },
+      {
+        "key": "snes-003",
+        "systemId": 6,
+        "systemKey": "snes",
+        "path": "./data/chunks/snes-003.js",
+        "gameCount": 508,
+        "part": 3,
+        "partCount": 3,
+        "estimatedBytes": 485838
       }
     ],
-    "chunked": true
+    "chunked": true,
+    "maxChunkBytes": 1048576
   },
   "systems": [
+    {
+      "id": 4,
+      "key": "gb",
+      "name": "Game Boy",
+      "shortName": "Game Boy",
+      "manufacturer": "Nintendo",
+      "category": "Handheld",
+      "generation": "Fourth generation",
+      "releaseYear": 1989,
+      "endYear": 2003,
+      "summary": "Nintendo's monochrome handheld line and one of the clearest examples of a system-first game catalog.",
+      "wikiUrl": null,
+      "gameCount": 1603,
+      "topGenres": [
+        "Action",
+        "Platform",
+        "Adventure",
+        "Puzzle"
+      ],
+      "sourceAttribution": {
+        "metadataProvider": "thegamesdb"
+      }
+    },
     {
       "id": 36,
       "key": "megadrive",
@@ -149,50 +236,69 @@
       "sourceAttribution": {
         "metadataProvider": "thegamesdb"
       }
-    },
-    {
-      "id": 4,
-      "key": "gb",
-      "name": "Game Boy",
-      "shortName": "Game Boy",
-      "manufacturer": "Nintendo",
-      "category": "Handheld",
-      "generation": "Fourth generation",
-      "releaseYear": 1989,
-      "endYear": 2003,
-      "summary": "Nintendo's monochrome handheld line and one of the clearest examples of a system-first game catalog.",
-      "wikiUrl": null,
-      "gameCount": 1603,
-      "topGenres": [
-        "Action",
-        "Platform",
-        "Adventure",
-        "Puzzle"
-      ],
-      "sourceAttribution": {
-        "metadataProvider": "thegamesdb"
-      }
     }
   ],
   "games": [],
   "chunkManifest": [
     {
+      "key": "gb-001",
+      "systemId": 4,
+      "systemKey": "gb",
+      "path": "./data/chunks/gb-001.js",
+      "gameCount": 1138,
+      "part": 1,
+      "partCount": 2,
+      "estimatedBytes": 1048468
+    },
+    {
+      "key": "gb-002",
+      "systemId": 4,
+      "systemKey": "gb",
+      "path": "./data/chunks/gb-002.js",
+      "gameCount": 465,
+      "part": 2,
+      "partCount": 2,
+      "estimatedBytes": 425582
+    },
+    {
       "key": "megadrive",
       "systemId": 36,
+      "systemKey": "megadrive",
       "path": "./data/chunks/megadrive.js",
-      "gameCount": 177
+      "gameCount": 177,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 172254
     },
     {
-      "key": "snes",
+      "key": "snes-001",
       "systemId": 6,
-      "path": "./data/chunks/snes.js",
-      "gameCount": 2697
+      "systemKey": "snes",
+      "path": "./data/chunks/snes-001.js",
+      "gameCount": 1086,
+      "part": 1,
+      "partCount": 3,
+      "estimatedBytes": 1048212
     },
     {
-      "key": "gb",
-      "systemId": 4,
-      "path": "./data/chunks/gb.js",
-      "gameCount": 1603
+      "key": "snes-002",
+      "systemId": 6,
+      "systemKey": "snes",
+      "path": "./data/chunks/snes-002.js",
+      "gameCount": 1103,
+      "part": 2,
+      "partCount": 3,
+      "estimatedBytes": 1048009
+    },
+    {
+      "key": "snes-003",
+      "systemId": 6,
+      "systemKey": "snes",
+      "path": "./data/chunks/snes-003.js",
+      "gameCount": 508,
+      "part": 3,
+      "partCount": 3,
+      "estimatedBytes": 485838
     }
   ]
 }

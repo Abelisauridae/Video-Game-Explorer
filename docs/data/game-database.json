@@ -1,22 +1,40 @@
 {
   "metadata": {
-    "generatedAt": "2026-03-26T00:02:17.627332+00:00",
-    "systemCount": 3,
-    "gameCount": 4477,
+    "generatedAt": "2026-03-27T16:44:01.323655+00:00",
+    "systemCount": 13,
+    "gameCount": 17940,
     "manufacturers": [
       "Nintendo",
-      "Sega"
+      "Sega",
+      "Sony"
     ],
     "topGenres": [
-      "Action",
-      "Platform",
-      "Sports",
-      "Shooter",
-      "Role-Playing",
-      "Adventure",
+      "2D Platforming",
+      "Sliding Puzzle",
+      "Adventure Book",
+      "Platforming",
+      "Sports - Fishing",
       "Puzzle"
     ],
     "providers": [
+      {
+        "id": "retroachievements",
+        "name": "RetroAchievements",
+        "websiteUrl": "https://retroachievements.org/",
+        "docsUrl": "https://api-docs.retroachievements.org/",
+        "pricing": "Free web API key",
+        "capabilities": [
+          "system catalog",
+          "games by system",
+          "per-game summary metadata",
+          "system icons",
+          "box art and title art"
+        ],
+        "credentials": [
+          "RETROACHIEVEMENTS_WEB_API_KEY"
+        ],
+        "notes": "Strong free retro source with official API docs and cache-friendly system/game endpoints. Better suited to the atlas than a shared public key with a tiny monthly allowance."
+      },
       {
         "id": "thegamesdb",
         "name": "TheGamesDB",
@@ -40,114 +58,210 @@
     ],
     "atlasStrategy": {
       "catalog": [
+        "retroachievements",
         "thegamesdb"
       ],
       "metadata": [
+        "retroachievements",
         "thegamesdb"
       ],
       "boxArt": [
+        "retroachievements",
         "thegamesdb"
       ]
     },
-    "providerUsage": {
-      "thegamesdb": 4477
-    },
-    "catalogSource": "thegamesdb",
+    "providerUsage": {},
+    "catalogSource": "retroachievements",
     "notes": [
       "Games are currently modeled as system-scoped release entries to avoid incorrect cross-platform merges.",
       "The atlas keeps only the systems listed in the local allowlist so the public bundle stays small and intentional.",
-      "The current catalog source is a curated TheGamesDB import, filtered by a local allowlist of atlas systems.",
-      "Remote TheGamesDB cover URLs are preserved directly in the bundle so the site does not need to copy box art into the repository.",
-      "TheGamesDB region and country fields can be used to drive atlas-style release geography in the UI.",
-      "This build preserves remote TheGamesDB cover URLs directly, so no local box-art staging directory is needed."
+      "RetroAchievements-style exports provide the system hierarchy for the checked-in sample data.",
+      "If present, generated screenscraper-game-enrichment.json data is merged into the manual game enrichment layer during build.",
+      "The normalized output is designed so box art, screenshots, logos, and metadata can be sourced separately without changing the UI contract."
     ],
     "sources": [
       {
-        "name": "TheGamesDB API",
-        "url": "https://api.thegamesdb.net/",
-        "role": "Primary catalog source for systems, games, metadata, and remote cover URLs"
+        "name": "RetroAchievements All Systems",
+        "url": "https://api-docs.retroachievements.org/v1/get-console-ids.html",
+        "role": "System list source and target raw export shape"
       },
       {
-        "name": "TheGamesDB site",
-        "url": "https://thegamesdb.net/",
-        "role": "Human-readable reference site for the imported game and platform records"
+        "name": "RetroAchievements All System Games",
+        "url": "https://api-docs.retroachievements.org/v1/get-game-list.html",
+        "role": "Per-system game list source and target raw export shape"
+      },
+      {
+        "name": "IGDB API docs",
+        "url": "https://api-docs.igdb.com/?getting-started=",
+        "role": "Alternative metadata source requiring Client ID and Client secret"
       }
     ],
     "assetStrategy": {
-      "mode": "remote-source-url",
+      "mode": "source-linked",
       "boxArtBaseUrl": null,
       "boxArtStagingDir": null,
-      "publishedGameImageCount": 4467,
-      "missingBoxArtCount": 10,
+      "publishedGameImageCount": 0,
+      "missingBoxArtCount": 0,
       "copiedAssetCount": 0
     },
     "chunkManifest": [
       {
-        "key": "megadrive",
-        "systemId": 36,
-        "path": "./data/chunks/megadrive.js",
-        "gameCount": 177
+        "key": "dreamcast",
+        "systemId": 40,
+        "systemKey": "dreamcast",
+        "path": "./data/chunks/dreamcast.js",
+        "gameCount": 476,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 290968
       },
       {
-        "key": "snes",
-        "systemId": 6,
-        "path": "./data/chunks/snes.js",
-        "gameCount": 2697
+        "key": "gamecube",
+        "systemId": 16,
+        "systemKey": "gamecube",
+        "path": "./data/chunks/gamecube.js",
+        "gameCount": 770,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 475100
       },
       {
         "key": "gb",
         "systemId": 4,
+        "systemKey": "gb",
         "path": "./data/chunks/gb.js",
-        "gameCount": 1603
+        "gameCount": 1187,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 726239
+      },
+      {
+        "key": "gba",
+        "systemId": 5,
+        "systemKey": "gba",
+        "path": "./data/chunks/gba.js",
+        "gameCount": 1929,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 1199609
+      },
+      {
+        "key": "gbc",
+        "systemId": 6,
+        "systemKey": "gbc",
+        "path": "./data/chunks/gbc.js",
+        "gameCount": 1094,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 677095
+      },
+      {
+        "key": "mastersystem",
+        "systemId": 11,
+        "systemKey": "mastersystem",
+        "path": "./data/chunks/mastersystem.js",
+        "gameCount": 382,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 231633
+      },
+      {
+        "key": "megadrive",
+        "systemId": 1,
+        "systemKey": "megadrive",
+        "path": "./data/chunks/megadrive.js",
+        "gameCount": 1404,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 859889
+      },
+      {
+        "key": "n64",
+        "systemId": 2,
+        "systemKey": "n64",
+        "path": "./data/chunks/n64.js",
+        "gameCount": 856,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 532948
+      },
+      {
+        "key": "nes",
+        "systemId": 7,
+        "systemKey": "nes",
+        "path": "./data/chunks/nes.js",
+        "gameCount": 2376,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 1462438
+      },
+      {
+        "key": "psp",
+        "systemId": 41,
+        "systemKey": "psp",
+        "path": "./data/chunks/psp.js",
+        "gameCount": 1457,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 894316
+      },
+      {
+        "key": "psx",
+        "systemId": 12,
+        "systemKey": "psx",
+        "path": "./data/chunks/psx.js",
+        "gameCount": 2607,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 1594352
+      },
+      {
+        "key": "saturn",
+        "systemId": 39,
+        "systemKey": "saturn",
+        "path": "./data/chunks/saturn.js",
+        "gameCount": 681,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 417688
+      },
+      {
+        "key": "snes",
+        "systemId": 3,
+        "systemKey": "snes",
+        "path": "./data/chunks/snes.js",
+        "gameCount": 2721,
+        "part": 1,
+        "partCount": 1,
+        "estimatedBytes": 1681166
       }
     ],
-    "chunked": true
+    "chunked": true,
+    "maxChunkBytes": 25165824
   },
   "systems": [
     {
-      "id": 36,
-      "key": "megadrive",
-      "name": "Mega Drive",
-      "shortName": "Mega Drive",
+      "id": 40,
+      "key": "dreamcast",
+      "name": "Dreamcast",
+      "shortName": "Dreamcast",
       "manufacturer": "Sega",
       "category": "Home console",
-      "generation": "Fourth generation",
-      "releaseYear": 1988,
-      "endYear": 1997,
-      "summary": "Sega's 16-bit console line, known for fast arcade-style ports and a strong action catalog.",
+      "generation": "Sixth generation",
+      "releaseYear": 1998,
+      "endYear": 2001,
+      "summary": "Sega's final console, remembered for inventive arcade design, early online play, and a cult-classic library.",
       "wikiUrl": null,
-      "gameCount": 177,
-      "topGenres": [
-        "Action",
-        "Sports",
-        "Platform",
-        "Shooter"
-      ],
+      "gameCount": 476,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/dc.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Dreamcast"
+      },
       "sourceAttribution": {
-        "metadataProvider": "thegamesdb"
-      }
-    },
-    {
-      "id": 6,
-      "key": "snes",
-      "name": "Super Nintendo Entertainment System",
-      "shortName": "SNES",
-      "manufacturer": "Nintendo",
-      "category": "Home console",
-      "generation": "Fourth generation",
-      "releaseYear": 1990,
-      "endYear": 2003,
-      "summary": "Nintendo's 16-bit console with a standout library of platformers, role-playing games, and first-party adventure titles.",
-      "wikiUrl": null,
-      "gameCount": 2697,
-      "topGenres": [
-        "Action",
-        "Sports",
-        "Platform",
-        "Role-Playing"
-      ],
-      "sourceAttribution": {
-        "metadataProvider": "thegamesdb"
+        "metadataProvider": "retroachievements"
       }
     },
     {
@@ -162,37 +276,423 @@
       "endYear": 2003,
       "summary": "Nintendo's monochrome handheld line and one of the clearest examples of a system-first game catalog.",
       "wikiUrl": null,
-      "gameCount": 1603,
+      "gameCount": 1187,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/gb.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Game Boy"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 5,
+      "key": "gba",
+      "name": "Game Boy Advance",
+      "shortName": "GBA",
+      "manufacturer": "Nintendo",
+      "category": "Handheld",
+      "generation": "Sixth generation",
+      "releaseYear": 2001,
+      "endYear": 2010,
+      "summary": "Nintendo's 32-bit handheld line with a broad library of platformers, RPGs, remakes, and portable experimentation.",
+      "wikiUrl": null,
+      "gameCount": 1929,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/gba.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Game Boy Advance"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 6,
+      "key": "gbc",
+      "name": "Game Boy Color",
+      "shortName": "Game Boy Color",
+      "manufacturer": "Nintendo",
+      "category": "Handheld",
+      "generation": "Fifth generation",
+      "releaseYear": 1998,
+      "endYear": 2003,
+      "summary": "Nintendo's color revision of the Game Boy line, bridging classic handheld design and a more modern portable library.",
+      "wikiUrl": null,
+      "gameCount": 1094,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/gbc.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Game Boy Color"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 11,
+      "key": "mastersystem",
+      "name": "Master System",
+      "shortName": "Master System",
+      "manufacturer": "Sega",
+      "category": "Home console",
+      "generation": "Third generation",
+      "releaseYear": 1985,
+      "endYear": 1996,
+      "summary": "Sega's 8-bit console family with strong arcade conversions and a long afterlife in Europe and Brazil.",
+      "wikiUrl": null,
+      "gameCount": 382,
       "topGenres": [
-        "Action",
-        "Platform",
-        "Adventure",
+        "2D Platforming",
+        "Sliding Puzzle",
+        "Adventure Book"
+      ],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/sms.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Master System"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 1,
+      "key": "megadrive",
+      "name": "Mega Drive",
+      "shortName": "Mega Drive",
+      "manufacturer": "Sega",
+      "category": "Home console",
+      "generation": "Fourth generation",
+      "releaseYear": 1988,
+      "endYear": 1997,
+      "summary": "Sega's 16-bit console line, known for fast arcade-style ports and a strong action catalog.",
+      "wikiUrl": null,
+      "gameCount": 1404,
+      "topGenres": [
+        "2D Platforming",
+        "Platforming",
+        "Sports - Fishing",
         "Puzzle"
       ],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/md.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Mega Drive"
+      },
       "sourceAttribution": {
-        "metadataProvider": "thegamesdb"
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 2,
+      "key": "n64",
+      "name": "Nintendo 64",
+      "shortName": "Nintendo 64",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Fifth generation",
+      "releaseYear": 1996,
+      "endYear": 2002,
+      "summary": "Nintendo's cartridge-based 3D console, defined by multiplayer landmarks and a concentrated first-party catalog.",
+      "wikiUrl": null,
+      "gameCount": 856,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/n64.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Nintendo 64"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 7,
+      "key": "nes",
+      "name": "Nintendo Entertainment System",
+      "shortName": "NES",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Third generation",
+      "releaseYear": 1983,
+      "endYear": 1995,
+      "summary": "Nintendo's breakthrough 8-bit console and one of the foundational system libraries in videogame history.",
+      "wikiUrl": null,
+      "gameCount": 2376,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/nes.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Nintendo Entertainment System"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 16,
+      "key": "gamecube",
+      "name": "Nintendo GameCube",
+      "shortName": "GameCube",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Sixth generation",
+      "releaseYear": 2001,
+      "endYear": 2007,
+      "summary": "Nintendo's compact optical-disc console with a polished first-party lineup and a strong late-arcade-era sensibility.",
+      "wikiUrl": null,
+      "gameCount": 770,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/gc.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Nintendo GameCube"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 41,
+      "key": "psp",
+      "name": "PlayStation Portable",
+      "shortName": "PSP",
+      "manufacturer": "Sony",
+      "category": "Handheld",
+      "generation": "Seventh generation",
+      "releaseYear": 2004,
+      "endYear": 2014,
+      "summary": "Sony's multimedia-focused handheld with a deep action, RPG, and portable console-style library.",
+      "wikiUrl": null,
+      "gameCount": 1457,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/psp.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for PlayStation Portable"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 39,
+      "key": "saturn",
+      "name": "Sega Saturn",
+      "shortName": "Saturn",
+      "manufacturer": "Sega",
+      "category": "Home console",
+      "generation": "Fifth generation",
+      "releaseYear": 1994,
+      "endYear": 2000,
+      "summary": "Sega's 32-bit console with a rich Japanese library, strong 2D action, and a distinctive late-arcade identity.",
+      "wikiUrl": null,
+      "gameCount": 681,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/sat.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Sega Saturn"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 12,
+      "key": "psx",
+      "name": "Sony PlayStation",
+      "shortName": "PlayStation",
+      "manufacturer": "Sony",
+      "category": "Home console",
+      "generation": "Fifth generation",
+      "releaseYear": 1994,
+      "endYear": 2006,
+      "summary": "Sony's first console and a major pivot point in the move toward CD-based 3D game publishing.",
+      "wikiUrl": null,
+      "gameCount": 2607,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/ps1.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Sony PlayStation"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
+      }
+    },
+    {
+      "id": 3,
+      "key": "snes",
+      "name": "Super Nintendo Entertainment System",
+      "shortName": "SNES",
+      "manufacturer": "Nintendo",
+      "category": "Home console",
+      "generation": "Fourth generation",
+      "releaseYear": 1990,
+      "endYear": 2003,
+      "summary": "Nintendo's 16-bit console with a standout library of platformers, role-playing games, and first-party adventure titles.",
+      "wikiUrl": null,
+      "gameCount": 2721,
+      "topGenres": [],
+      "logo": {
+        "url": "https://static.retroachievements.org/assets/images/system/snes.png",
+        "provider": "retroachievements",
+        "kind": "system-icon",
+        "alt": "System icon for Super Nintendo Entertainment System"
+      },
+      "sourceAttribution": {
+        "metadataProvider": "retroachievements"
       }
     }
   ],
   "games": [],
   "chunkManifest": [
     {
-      "key": "megadrive",
-      "systemId": 36,
-      "path": "./data/chunks/megadrive.js",
-      "gameCount": 177
+      "key": "dreamcast",
+      "systemId": 40,
+      "systemKey": "dreamcast",
+      "path": "./data/chunks/dreamcast.js",
+      "gameCount": 476,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 290968
     },
     {
-      "key": "snes",
-      "systemId": 6,
-      "path": "./data/chunks/snes.js",
-      "gameCount": 2697
+      "key": "gamecube",
+      "systemId": 16,
+      "systemKey": "gamecube",
+      "path": "./data/chunks/gamecube.js",
+      "gameCount": 770,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 475100
     },
     {
       "key": "gb",
       "systemId": 4,
+      "systemKey": "gb",
       "path": "./data/chunks/gb.js",
-      "gameCount": 1603
+      "gameCount": 1187,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 726239
+    },
+    {
+      "key": "gba",
+      "systemId": 5,
+      "systemKey": "gba",
+      "path": "./data/chunks/gba.js",
+      "gameCount": 1929,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 1199609
+    },
+    {
+      "key": "gbc",
+      "systemId": 6,
+      "systemKey": "gbc",
+      "path": "./data/chunks/gbc.js",
+      "gameCount": 1094,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 677095
+    },
+    {
+      "key": "mastersystem",
+      "systemId": 11,
+      "systemKey": "mastersystem",
+      "path": "./data/chunks/mastersystem.js",
+      "gameCount": 382,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 231633
+    },
+    {
+      "key": "megadrive",
+      "systemId": 1,
+      "systemKey": "megadrive",
+      "path": "./data/chunks/megadrive.js",
+      "gameCount": 1404,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 859889
+    },
+    {
+      "key": "n64",
+      "systemId": 2,
+      "systemKey": "n64",
+      "path": "./data/chunks/n64.js",
+      "gameCount": 856,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 532948
+    },
+    {
+      "key": "nes",
+      "systemId": 7,
+      "systemKey": "nes",
+      "path": "./data/chunks/nes.js",
+      "gameCount": 2376,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 1462438
+    },
+    {
+      "key": "psp",
+      "systemId": 41,
+      "systemKey": "psp",
+      "path": "./data/chunks/psp.js",
+      "gameCount": 1457,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 894316
+    },
+    {
+      "key": "psx",
+      "systemId": 12,
+      "systemKey": "psx",
+      "path": "./data/chunks/psx.js",
+      "gameCount": 2607,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 1594352
+    },
+    {
+      "key": "saturn",
+      "systemId": 39,
+      "systemKey": "saturn",
+      "path": "./data/chunks/saturn.js",
+      "gameCount": 681,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 417688
+    },
+    {
+      "key": "snes",
+      "systemId": 3,
+      "systemKey": "snes",
+      "path": "./data/chunks/snes.js",
+      "gameCount": 2721,
+      "part": 1,
+      "partCount": 1,
+      "estimatedBytes": 1681166
     }
   ]
 }

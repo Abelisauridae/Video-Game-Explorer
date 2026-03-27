@@ -1,14 +1,14 @@
 {
-  "catalogSource": "thegamesdb",
-  "systemCount": 3,
-  "gameCount": 4477,
-  "chunkCount": 3,
+  "catalogSource": "retroachievements",
+  "systemCount": 13,
+  "gameCount": 17940,
+  "chunkCount": 13,
   "assetStrategy": {
-    "mode": "remote-source-url",
+    "mode": "source-linked",
     "boxArtBaseUrl": null,
     "boxArtStagingDir": null,
-    "publishedGameImageCount": 4467,
-    "missingBoxArtCount": 10,
+    "publishedGameImageCount": 0,
+    "missingBoxArtCount": 0,
     "copiedAssetCount": 0
   },
   "openFile": "index.html"
