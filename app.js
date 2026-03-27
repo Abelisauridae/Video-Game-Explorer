@@ -85,7 +85,7 @@ const SYSTEM_LOGO_PALETTES = {
   },
 };
 const SYSTEM_LOGO_CACHE = new Map();
-const EXCLUDED_TITLE_PATTERNS = [/~\s*hack\s*~/i];
+const EXCLUDED_TITLE_PATTERNS = [/~\s*(hack|homebrew|unlicensed|demo|prototype)\s*~/i];
 
 function normalizeTitle(title) {
   return String(title || "").replace(/^the\s+/i, "").trim();
